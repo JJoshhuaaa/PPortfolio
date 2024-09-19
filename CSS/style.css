@@ -1,0 +1,284 @@
+:root {
+    --primary-color: #091186;
+    --secondary-color: #0084db;
+    --text-color: #c29314a2;
+    --white: #d3dbdb;
+    --black: #000000;
+    --background-color: #D7CDBE;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+
+/* 
+    Section 1
+*/
+
+
+#section1 {
+    background: var(--background-color);
+    background-size: cover;
+    height: 100vh;
+}
+
+.section1_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: fit-content;
+    margin: 0 auto;
+    padding: 40vh;
+}
+
+.section1_h2 {
+    font: calc(2vw + 1.5rem) "Times New Roman", Times, serif;
+}
+
+.section1_h2 span {
+    color: var(--black);
+}
+
+.section1_buttons {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    gap: 2vw;
+}
+
+.section1_buttons a {
+    text-decoration: none;
+    color: #848484;
+    font: calc(1vw + 0.75rem) "Shanti", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.section1_buttons a:hover {
+    color: var(--black);
+    transition: ease 0.18s;
+}
+
+
+/* 
+    Section 2 
+*/
+
+
+#section2 {
+    background: var(--background-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'Header Header Header Header Header'
+      'Sidetext Sidetext Sidetext Image Image'
+      'Sidetext Sidetext Sidetext Image Image'
+      'Sidetext Sidetext Sidetext Image Image'
+      'Footer Footer Footer Image Image';
+    grid-template-columns: 1fr 1fr 3fr 3fr 1fr;
+    grid-template-rows: auto 2fr 2fr 2fr auto;
+    gap: 1em;
+    padding: 2em;
+    width: 50vw;
+    max-width: 60vw;
+    margin: 0 auto;
+    position: relative; /* Position relative to allow absolute positioning of children */
+}
+
+.grid-container.active {
+    background-color: var(--white);
+}
+
+.grid-container > div {
+    padding: 1em; 
+    font: calc(1em + 0.75rem) "Times New Roman", Times, serif;
+  }  
+
+
+.item1 {
+    grid-area: Header;
+    background-color: var(--background-color);
+    color: black;
+    text-align: left;
+    padding: 1em; 
+    font-size: 2vw;
+    width: fit-content;
+}
+
+.item1.active {
+    width: auto;
+    text-align: left;
+    background-color: white;
+}
+
+.item1.active button {
+    text-align: left;
+}
+
+.item1 h2{
+    font: calc(1em + 0.75rem) "Times New Roman", Times, serif;
+}
+
+.item2 {
+    grid-area: Sidetext;
+    background-color: #ffffff;
+    padding: 1em; 
+    font-size: 1.5vw; 
+    color: #000000;
+}
+
+.item3 {
+    grid-area: Image;
+    background-color: #ffffff;
+    padding: 1em; 
+    font-size: 1.5vw; 
+    position: relative; /* Make sure it's the reference point for the absolute positioning of AltImage */
+    overflow: hidden;
+    user-select: none;
+}
+
+.item3 img {
+    width: 100%; /* Make image fill its container */
+    height: auto; /* Maintain aspect ratio 
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+.item4 {
+    grid-area: AltImage;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5em;
+    font-size: 1em;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    width: 30%;
+    max-width: 200px;
+    z-index: 10;
+    color: #000000;
+
+}
+
+.item5 {
+    grid-area: Footer;
+    background-color: #2196F3;
+    color: black;
+    text-align: center;
+    padding: 1em; 
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.item2, .item3, .item4, .item5 {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+.expanded {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+
+/* 
+    Section 3
+*/
+
+
+#section3 {
+    background: var(--background-color);
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    max-width: 100vw;
+}
+
+
+/* Timeline navigation on the left */
+.timeline-container {
+    position: absolute;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--primary-color);
+    width: fit-content;
+    height: fit-content;
+    z-index: 10;
+    margin: 20vw 0 0 25%;
+}
+
+.timeline-item {
+    cursor: pointer;
+    color: var(--white);
+    padding: 1em;
+    font-size: 1.2em;
+}
+
+.timeline-item:hover {
+    color: var(--secondary-color);
+}
+
+/* Content section */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100vw - 150px); /* Adjust width to account for timeline */
+    height: 100%;
+    margin-left: 150px; /* Allow space for the timeline */
+    position: relative;
+}
+
+.content-section {
+    display: none;
+    background-color: var(--white);
+    padding: 2em;
+    width: 60%; /* Centered and responsive */
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.content-section.active {
+    display: block;
+    margin: 0 auto; /* Center the content */
+}
+
+/* 
+    Section 4
+*/
+
+
+#section4 {
+    background: linear-gradient( rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6) ),url(../img/bg4.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
